@@ -7,10 +7,10 @@ class Solution {
         while(e < nums.length){
             c += c(nums[e], a, b, 1);
             while(d <= e && e(c, k)){
-                c -= c(nums[d], a, b, -1);
+                c += c(nums[d], a, b, -1);
                 d++;
             }
-            f = d(e, e-d+1);
+            f = d(f, e-d+1);
             e++;
         }
         return f;
@@ -39,10 +39,17 @@ class Solution {
         int e = 0;
         while(a > 1){
             int f = b(a,b);
-            if(d == 1 && c[f] == 0) e++;
-            c[f] += d;
-            if(d == -1 && c[f] == 0) e--;
-            while(a % f == 0) a /= f;
+            if(d == 1){
+                if(c[f] == 0) e++;
+                c[f]++;
+            }
+            else{
+                c[f]--;
+                if(c[f] == 0) e--;
+            }
+            while(a % f == 0){
+                a /= f;
+            } 
         }
         return e;
     }
